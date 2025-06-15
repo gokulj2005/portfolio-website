@@ -14,7 +14,7 @@ const Hero = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-8">
           <img
-            src="public/images/033466.JPG"
+            src="./public/images/033466.JPG"
             alt="Headshot of Gokul"
             className="w-32 h-32 rounded-full mx-auto mb-8 object-cover shadow-lg border-4 border-white"
           />
