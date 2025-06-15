@@ -28,8 +28,8 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      content: "your.email@example.com",
-      link: "mailto:your.email@example.com"
+      content: "gokuljayakumar89@gmail.com",
+      link: "mailto:gokuljayakumar89@gmail.com"
     },
     {
       icon: <Phone className="w-6 h-6" />,
@@ -46,8 +46,8 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: <Github className="w-6 h-6" />, label: "GitHub", url: "https://github.com/yourusername" },
-    { icon: <Linkedin className="w-6 h-6" />, label: "LinkedIn", url: "https://linkedin.com/in/yourprofile" },
+    { icon: <Github className="w-6 h-6" />, label: "GitHub", url: "https://github.com/gokulj2005" },
+    { icon: <Linkedin className="w-6 h-6" />, label: "LinkedIn", url: "https://linkedin.com/in/gokul-j-13g" },
     { icon: <Twitter className="w-6 h-6" />, label: "Twitter", url: "https://twitter.com/yourusername" }
   ];
 

@@ -14,7 +14,7 @@ const Footer = () => {
             onClick={scrollToTop}
             className="text-2xl font-bold mb-4 hover:text-blue-400 transition-colors"
           >
-            Your Name
+            Gokul
           </button>
           
           <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
@@ -28,7 +28,7 @@ const Footer = () => {
           </div>
           
           <div className="mt-8 pt-8 border-t border-gray-800 text-gray-500">
-            <p>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Gokul. All rights reserved.</p>
           </div>
         </div>
       </div>

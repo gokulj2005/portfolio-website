@@ -40,7 +40,7 @@ const Header = () => {
             onClick={() => scrollToSection('hero')}
             className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
           >
-            Your Name
+            Gokul
           </button>
 
           {/* Desktop Navigation */}
