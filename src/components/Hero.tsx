@@ -10,7 +10,7 @@ const Hero = () => {
   };
 
   const viewResume = () => {
-    window.open('/Resume_updated_reduced_version_May_25_.pdf', '_blank');
+    window.open('/portfolio-website/Resume_updated_reduced_version_May_25_.pdf', '_blank');
   };
 
   return (
