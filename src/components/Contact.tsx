@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Contact = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,6 +11,30 @@ const Contact = () => {
   });
 
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const animatedElements = entry.target.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach((el, index) => {
+              setTimeout(() => {
+                el.classList.add('animate');
+              }, index * 100);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -69,18 +94,18 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-white" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-on-scroll">Get In Touch</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-on-scroll">
             I'm always interested in new opportunities and collaborations. Let's discuss how we can work together.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div>
+          <div className="animate-on-scroll">
             <h3 className="text-2xl font-bold text-gray-900 mb-8">Contact Information</h3>
 
             <div className="space-y-6 mb-8">
@@ -88,9 +113,9 @@ const Contact = () => {
                 <a
                   key={index}
                   href={info.link}
-                  className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 group"
+                  className="flex items-center p-4 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:scale-105 transition-all duration-300 group"
                 >
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mr-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mr-4 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
                     {info.icon}
                   </div>
                   <div>
@@ -110,7 +135,7 @@ const Contact = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition-colors"
+                    className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white hover:scale-110 hover:rotate-12 transition-all duration-300"
                   >
                     {social.icon}
                   </a>
@@ -120,7 +145,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div>
+          <div className="animate-on-scroll">
             <h3 className="text-2xl font-bold text-gray-900 mb-8">Send a Message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -136,7 +161,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:scale-105 transition-all duration-300"
                     placeholder="Your full name"
                   />
                 </div>
@@ -151,7 +176,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:scale-105 transition-all duration-300"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -168,7 +193,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:scale-105 transition-all duration-300"
                   placeholder="What's this about?"
                 />
               </div>
@@ -184,14 +209,14 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:scale-105 transition-all duration-300 resize-none"
                   placeholder="Tell me about your project or opportunity..."
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
+                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 hover:scale-105 transition-all duration-300 flex items-center justify-center animate-pulse-hover"
               >
                 <Send className="w-5 h-5 mr-2" />
                 Send Message
@@ -199,10 +224,10 @@ const Contact = () => {
 
               {/* Status Message */}
               {status === "success" && (
-                <p className="text-green-600 font-medium mt-4">✅ Message sent successfully!</p>
+                <p className="text-green-600 font-medium mt-4 animate-fadeIn">✅ Message sent successfully!</p>
               )}
               {status === "error" && (
-                <p className="text-red-600 font-medium mt-4">❌ Something went wrong. Please try again later.</p>
+                <p className="text-red-600 font-medium mt-4 animate-fadeIn">❌ Something went wrong. Please try again later.</p>
               )}
             </form>
           </div>

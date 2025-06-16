@@ -1,7 +1,35 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Code, Users, Lightbulb, Target, Zap, Shield } from 'lucide-react';
 
 const Skills = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            const animatedElements = entry.target.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach((el, index) => {
+              setTimeout(() => {
+                el.classList.add('animate');
+              }, index * 150);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const skillCategories = [
     {
       title: "Technical Skills",
@@ -42,11 +70,11 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-white">
+    <section id="skills" className="py-20 bg-white" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-on-scroll">Skills & Expertise</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-on-scroll">
             A comprehensive overview of my technical skills, leadership capabilities, and core competencies.
           </p>
         </div>
@@ -54,9 +82,9 @@ const Skills = () => {
         {/* Skills Categories */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {skillCategories.map((category, index) => (
-            <div key={index} className="bg-gray-50 rounded-lg p-8">
+            <div key={index} className="bg-gray-50 rounded-lg p-8 animate-on-scroll hover:shadow-lg hover:scale-105 transition-all duration-300">
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mr-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mr-4 hover:bg-blue-600 hover:text-white transition-colors">
                   {category.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">{category.title}</h3>
@@ -72,7 +100,10 @@ const Skills = () => {
                     <div className="w-full bg-gray-200 rounded-full h-2">
                       <div
                         className="bg-blue-600 h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
+                        style={{ 
+                          width: isVisible ? `${skill.level}%` : '0%',
+                          transitionDelay: `${skillIndex * 200}ms`
+                        }}
                       ></div>
                     </div>
                   </div>
@@ -84,11 +115,11 @@ const Skills = () => {
         
         {/* Core Competencies */}
         <div>
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">Core Competencies</h3>
+          <h3 className="text-2xl font-bold text-gray-900 text-center mb-12 animate-on-scroll">Core Competencies</h3>
           <div className="grid md:grid-cols-3 gap-8">
             {coreCompetencies.map((competency, index) => (
-              <div key={index} className="text-center p-6 rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-4">
+              <div key={index} className="text-center p-6 rounded-lg border border-gray-200 hover:border-blue-300 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-on-scroll group">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-4 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
                   {competency.icon}
                 </div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">{competency.title}</h4>

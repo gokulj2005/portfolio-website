@@ -1,7 +1,33 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Calendar, MapPin, Building } from 'lucide-react';
 
 const Experience = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const animatedElements = entry.target.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach((el, index) => {
+              setTimeout(() => {
+                el.classList.add('animate');
+              }, index * 200);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const experiences = [
     {
       title: "AI Intern",
@@ -37,11 +63,11 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gray-50">
+    <section id="experience" className="py-20 bg-gray-50" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Professional Experience</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4 animate-on-scroll">Professional Experience</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-on-scroll">
             A comprehensive overview of my professional journey and key accomplishments.
           </p>
         </div>
@@ -52,15 +78,15 @@ const Experience = () => {
           
           <div className="space-y-12">
             {experiences.map((exp, index) => (
-              <div key={index} className="relative flex items-start">
+              <div key={index} className="relative flex items-start animate-on-scroll">
                 {/* Timeline dot */}
-                <div className="hidden md:flex absolute left-6 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg"></div>
+                <div className="hidden md:flex absolute left-6 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg animate-pulse"></div>
                 
                 <div className="md:ml-16 w-full">
-                  <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+                  <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl hover:scale-105 transition-all duration-300 group">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{exp.title}</h3>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{exp.title}</h3>
                         <div className="flex items-center text-blue-600 mb-2">
                           <Building className="w-4 h-4 mr-2" />
                           <span className="font-semibold">{exp.company}</span>
