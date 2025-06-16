@@ -64,7 +64,7 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="animate-on-scroll">
             <img
-              src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
+              src="/portfolio-website/images/DSC00079.JPG"
               alt="Professional workspace"
               className="rounded-lg shadow-lg w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
             />

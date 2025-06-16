@@ -45,7 +45,7 @@ const Projects = () => {
       technologies: ["MATLAB Simulink", "Verilog"],
       timeline: "1 months",
       teamSize: "1 person",
-      githubUrl: "#"
+      githubUrl: "https://github.com/gokulj2005/ZCZ_based_CDMA.git"
     },
     {
       title: "Pedometer for Athletes",
@@ -54,7 +54,7 @@ const Projects = () => {
       technologies: ["Arduino", "ADXL335", "I2C", "PCB"],
       timeline: "1 month",
       teamSize: "1 person",
-      githubUrl: "#"
+      githubUrl: "https://github.com/gokulj2005/Pedometer.git"
     },
     {
       title: "Digital Tachometer",
@@ -63,7 +63,7 @@ const Projects = () => {
       technologies: ["Embedded C", "Arduino", "IR Sensor"],
       timeline: "1 month",
       teamSize: "2 people",
-      githubUrl: "#"
+      githubUrl: "https://github.com/gokulj2005/digital_tachometer.git"
     }
   ];
 
