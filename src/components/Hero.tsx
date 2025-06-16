@@ -29,7 +29,7 @@ const Hero = () => {
         </h1>
         
         <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-          A passionate professional dedicated to creating innovative solutions and driving meaningful impact through technology and creativity.
+          Passionate Electronics and Communication Engineer committed to crafting innovative tech solutions and delivering real-world impact through a blend of creativity, curiosity, and technical excellence.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">

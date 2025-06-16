@@ -4,39 +4,34 @@ import { Calendar, MapPin, Building } from 'lucide-react';
 const Experience = () => {
   const experiences = [
     {
-      title: "Senior Position Title",
-      company: "Company Name",
-      location: "City, State",
-      period: "2021 - Present",
+      title: "AI Intern",
+      company: "Samsung Prism",
+      location: "Coimbatore, Tamil Nadu",
+      period: "Jan 2025 – Present",
       description: [
-        "Led cross-functional teams to deliver high-impact projects on time and within budget",
-        "Implemented innovative solutions that improved efficiency by 30% and reduced costs",
-        "Mentored junior team members and contributed to professional development initiatives",
-        "Collaborated with stakeholders to define strategic objectives and execution plans"
+        "Developing a GenAI model to generate WiFi and Zigbee signal strength heatmaps",
       ]
     },
     {
-      title: "Mid-Level Position Title",
-      company: "Previous Company",
-      location: "City, State",
-      period: "2018 - 2021",
+      title: "Intern – Reverse Engineering",
+      company: "5BRD, Sulur (Indian Air Force)",
+      location: "Coimbatore, Tamil Nadu",
+      period: "May 2024 – July 2024 ",
       description: [
-        "Managed complex projects from conception to completion with measurable success metrics",
-        "Developed and maintained strong client relationships resulting in 95% retention rate",
-        "Streamlined processes and workflows to increase team productivity",
-        "Contributed to strategic planning and business development initiatives"
+        "Worked on reverse engineering PCBs of aircraft LRUs",
+        "Presented a concept paper on reverse engineering Radio Altimeter indicators for the Dornier aircraft",
+        "Gained practical experience in reverse engineering of PCBs, and electronics troubleshooting.",
       ]
     },
     {
-      title: "Junior Position Title",
-      company: "Earlier Company",
-      location: "City, State",
-      period: "2016 - 2018",
+      title: "AI Club Member",
+      company: "Karunya Hacks, Karunya Institute of Technology and Sciences",
+      location: "Coimbatore, Tamil Nadu",
+      period: "Sep 2023 – July 2024",
       description: [
-        "Gained comprehensive experience in industry best practices and methodologies",
-        "Supported senior team members on various high-priority initiatives",
-        "Demonstrated strong analytical and problem-solving skills on daily basis",
-        "Participated in professional development programs and training opportunities"
+        "Collaborated with peers on AI and machine learning projects, contributing to solution design and model development",
+        "Engaged in workshops and tech events to stay updated with the latest trends in AI and its practical applications",
+        "Served as an organizer in various hackathons and workshops."
       ]
     }
   ];

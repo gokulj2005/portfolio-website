@@ -7,30 +7,30 @@ const Skills = () => {
       title: "Technical Skills",
       icon: <Code className="w-6 h-6" />,
       skills: [
-        { name: "Programming Languages", level: 90 },
-        { name: "Web Development", level: 85 },
-        { name: "Database Management", level: 80 },
-        { name: "Cloud Technologies", level: 75 }
+        { name: "Machine Learning & AI", level: 90 },
+        { name: "Embedded System", level: 85 },
+        { name: "Circuit Design & PCB", level: 80 },
+        { name: "Signal Processing", level: 75 }
       ]
     },
     {
       title: "Leadership",
       icon: <Users className="w-6 h-6" />,
       skills: [
-        { name: "Team Management", level: 95 },
-        { name: "Project Leadership", level: 90 },
-        { name: "Mentoring", level: 85 },
-        { name: "Strategic Planning", level: 80 }
+        { name: "Team Collaboration", level: 90 },
+        { name: "Hackathon Participation", level: 85 },
+        { name: "Project Coordination", level: 80 },
+        { name: "Public Speaking", level: 75 }
       ]
     },
     {
       title: "Innovation",
       icon: <Lightbulb className="w-6 h-6" />,
       skills: [
-        { name: "Creative Problem Solving", level: 90 },
-        { name: "Process Improvement", level: 85 },
-        { name: "Technology Adoption", level: 80 },
-        { name: "Innovation Management", level: 75 }
+        { name: "Creative Prototyping", level: 85 },
+        { name: "Reverse Engineering", level: 80 },
+        { name: "Tech Exploration", level: 80 },
+        { name: "AI Integration", level: 75 }
       ]
     }
   ];

@@ -34,13 +34,13 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      content: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      content: "+91 9500820402",
+      link: "tel:+919500820402"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
-      content: "City, State, Country",
+      content: "Coimbatore, Tamilnadu, India",
       link: "#"
     }
   ];
@@ -48,7 +48,7 @@ const Contact = () => {
   const socialLinks = [
     { icon: <Github className="w-6 h-6" />, label: "GitHub", url: "https://github.com/gokulj2005" },
     { icon: <Linkedin className="w-6 h-6" />, label: "LinkedIn", url: "https://linkedin.com/in/gokul-j-13g" },
-    { icon: <Twitter className="w-6 h-6" />, label: "Twitter", url: "https://twitter.com/yourusername" }
+    { icon: <Twitter className="w-6 h-6" />, label: "Twitter", url: "https://twitter.com/Gokulj1988273" }
   ];
 
   return (

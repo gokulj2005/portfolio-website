@@ -6,12 +6,12 @@ const About = () => {
     {
       icon: <User className="w-6 h-6" />,
       title: "Professional Background",
-      description: "Experienced professional with a proven track record of delivering exceptional results across multiple industries."
+      description: "Technically skilled and growth-focused, with hands-on experience in electronics, embedded systems, and AI applications."
     },
     {
       icon: <Award className="w-6 h-6" />,
       title: "Achievements",
-      description: "Recognized for outstanding performance and innovative solutions that have driven significant business impact."
+      description: "Recognized for innovative thinking, academic excellence, and delivering practical solutions with real-world impact."
     },
     {
       icon: <Heart className="w-6 h-6" />,
@@ -47,14 +47,10 @@ const About = () => {
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-6">My Journey</h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              I am a dedicated professional with extensive experience in my field, passionate about creating innovative solutions 
-              and driving meaningful impact. Throughout my career, I have consistently demonstrated the ability to adapt to new 
-              challenges, learn quickly, and deliver exceptional results.
+              I’m a passionate and dedicated Electronics and Communication Engineering student, driven by a desire to build innovative solutions that create real-world impact. I approach every challenge with curiosity, adaptability, and a hunger to learn and grow.
             </p>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              My approach combines technical expertise with strong interpersonal skills, allowing me to work effectively with 
-              diverse teams and stakeholders. I believe in continuous improvement and staying current with industry trends and 
-              best practices.
+              Blending technical skills with strong communication and teamwork, I enjoy collaborating with diverse teams and turning ideas into practical outcomes. I believe in continuous improvement and make it a point to stay updated with evolving technologies and industry best practices. My goal is to contribute meaningfully wherever I go—through both smart engineering and thoughtful execution.
             </p>
             
             <div className="grid sm:grid-cols-2 gap-4">

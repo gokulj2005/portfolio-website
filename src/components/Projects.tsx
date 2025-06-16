@@ -1,46 +1,42 @@
 import React from 'react';
-import { ExternalLink, Github, Calendar, Users } from 'lucide-react';
+import { Github, Calendar, Users } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
-      title: "Enterprise Solution Platform",
-      description: "Developed a comprehensive platform that streamlined operations across multiple departments, resulting in 40% improved efficiency and significant cost savings.",
-      image: "https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop",
-      technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
-      timeline: "6 months",
-      teamSize: "8 people",
-      liveUrl: "#",
+      title: "Voice Translation with Cloning",
+      description: "Developed a tool that converts spoken audio from other languages to English while replicating the user's voice for seamless communication.",
+      image: "/portfolio-website/images/sample_output.png",
+      technologies: ["Python", "OpenAI Whisper", "Gradio"],
+      timeline: "2 months",
+      teamSize: "1 person",
+      githubUrl: "https://github.com/gokulj2005/Voice-Translation-With-Cloning.git"
+    },
+    {
+      title: "ZCZ Based CDMA System Simulation",
+      description: "Designed and simulated a CDMA system using ZCZ sequences over AWGN channels using Simulink and Verilog for signal transmission and reception.",
+      image: "/portfolio-website/images/zcz.png",
+      technologies: ["MATLAB Simulink", "Verilog"],
+      timeline: "1 months",
+      teamSize: "1 person",
       githubUrl: "#"
     },
     {
-      title: "Data Analytics Dashboard",
-      description: "Created an interactive dashboard providing real-time insights and analytics, enabling data-driven decision making across the organization.",
-      image: "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop",
-      technologies: ["Python", "D3.js", "MongoDB", "Docker"],
-      timeline: "4 months",
-      teamSize: "5 people",
-      liveUrl: "#",
+      title: "Pedometer for Athletes",
+      description: "Built a pedometer to count steps using an accelerometer and display output on an LCD screen, aimed at monitoring athletic performance.",
+      image: "/portfolio-website/images/unnamed.webp",
+      technologies: ["Arduino", "ADXL335", "I2C", "PCB"],
+      timeline: "1 month",
+      teamSize: "1 person",
       githubUrl: "#"
     },
     {
-      title: "Mobile Application Suite",
-      description: "Built a comprehensive mobile application that enhanced user engagement by 200% and provided seamless cross-platform functionality.",
-      image: "https://images.pexels.com/photos/3184350/pexels-photo-3184350.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop",
-      technologies: ["React Native", "Firebase", "Redux", "TypeScript"],
-      timeline: "8 months",
-      teamSize: "6 people",
-      liveUrl: "#",
-      githubUrl: "#"
-    },
-    {
-      title: "Process Automation System",
-      description: "Designed and implemented an automation system that reduced manual processing time by 70% and improved accuracy significantly.",
-      image: "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop",
-      technologies: ["Python", "RPA", "API Integration", "Machine Learning"],
-      timeline: "5 months",
-      teamSize: "4 people",
-      liveUrl: "#",
+      title: "Digital Tachometer",
+      description: "Created a device to measure the RPM of motors using an IR sensor and display readings on a digital interface.",
+      image: "/portfolio-website/images/Tachometer-close-up.jpg",
+      technologies: ["Embedded C", "Arduino", "IR Sensor"],
+      timeline: "1 month",
+      teamSize: "2 people",
       githubUrl: "#"
     }
   ];
@@ -90,14 +86,7 @@ const Projects = () => {
                   </div>
                 </div>
                 
-                <div className="flex space-x-4">
-                  <a
-                    href={project.liveUrl}
-                    className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    View Live
-                  </a>
+                <div className="flex">
                   <a
                     href={project.githubUrl}
                     className="flex items-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
