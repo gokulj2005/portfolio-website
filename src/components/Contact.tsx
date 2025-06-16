@@ -9,6 +9,8 @@ const Contact = () => {
     message: ''
   });
 
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -16,12 +18,27 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    try {
+      const response = await fetch("https://formspree.io/f/xzzggoba", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      setStatus("error");
+    }
   };
 
   const contactInfo = [
@@ -60,12 +77,12 @@ const Contact = () => {
             I'm always interested in new opportunities and collaborations. Let's discuss how we can work together.
           </p>
         </div>
-        
+
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-8">Contact Information</h3>
-            
+
             <div className="space-y-6 mb-8">
               {contactInfo.map((info, index) => (
                 <a
@@ -83,7 +100,7 @@ const Contact = () => {
                 </a>
               ))}
             </div>
-            
+
             <div>
               <h4 className="text-lg font-semibold text-gray-900 mb-4">Follow Me</h4>
               <div className="flex space-x-4">
@@ -101,82 +118,93 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Contact Form */}
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-8">Send a Message</h3>
-            
-            <form
-  action="https://formspree.io/f/xzzggoba"
-  method="POST"
-  className="space-y-6"
->
-  <div className="grid sm:grid-cols-2 gap-6">
-    <div>
-      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-        Full Name
-      </label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-        placeholder="Your full name"
-      />
-    </div>
-    <div>
-      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-        Email Address
-      </label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-        placeholder="your.email@example.com"
-      />
-    </div>
-  </div>
 
-  <div>
-    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-      Subject
-    </label>
-    <input
-      type="text"
-      id="subject"
-      name="subject"
-      required
-      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-      placeholder="What's this about?"
-    />
-  </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="Your full name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+              </div>
 
-  <div>
-    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-      Message
-    </label>
-    <textarea
-      id="message"
-      name="message"
-      required
-      rows={6}
-      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
-      placeholder="Tell me about your project or opportunity..."
-    ></textarea>
-  </div>
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                  placeholder="What's this about?"
+                />
+              </div>
 
-  <button
-    type="submit"
-    className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
-  >
-    <Send className="w-5 h-5 mr-2" />
-    Send Message
-  </button>
-</form>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={6}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                  placeholder="Tell me about your project or opportunity..."
+                ></textarea>
+              </div>
 
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
+              >
+                <Send className="w-5 h-5 mr-2" />
+                Send Message
+              </button>
+
+              {/* Status Message */}
+              {status === "success" && (
+                <p className="text-green-600 font-medium mt-4">✅ Message sent successfully!</p>
+              )}
+              {status === "error" && (
+                <p className="text-red-600 font-medium mt-4">❌ Something went wrong. Please try again later.</p>
+              )}
+            </form>
           </div>
         </div>
       </div>
